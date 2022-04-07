@@ -13,12 +13,6 @@ RUN git clone https://github.com/jstaniev/ohalo-jhipster-sample.git
 WORKDIR ohalo-jhipster-sample/
 RUN npm install
 RUN ./gradlew -Pprod clean bootJar
-ADD ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-#RUN ./gradlew -x webapp
 EXPOSE 8080
-#CMD ["java", "-Xmx512m", "-Xms256m", "-noverify", "-XX:+AlwaysPreTouch", "-Djava.security.egd=file:/dev/./urandom", "-jar build/libs/sample-app-0.0.1-SNAPSHOT.jar"]
-#CMD ["java", "-jar", "build/libs/*.jar"]
-ENTRYPOINT ["/entrypoint.sh"]
-#CMD ["npm", "start"]
+CMD ["java", "-Xmx512m", "-Xms256m", "-noverify", "-XX:+AlwaysPreTouch", "-Djava.security.egd=file:/dev/./urandom", "-jar", "build/libs/sample-app-0.0.1-SNAPSHOT.jar"]
 
